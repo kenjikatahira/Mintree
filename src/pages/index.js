@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Feed from '../components/Feed'
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     try {
 
         const response = await fetch('http://localhost:3000/api/notion')
