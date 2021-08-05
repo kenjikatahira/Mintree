@@ -3,7 +3,7 @@ import Feed from '../components/Feed'
 export async function getServerSideProps(context) {
     try {
 
-        const response = await fetch('http://localhost:3000/api/notion')
+        const response = await fetch(process.env.MINTREE_NOTION_API)
         const {
             data : items
         } = await response.json()

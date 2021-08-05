@@ -45,10 +45,9 @@ const Feed = ({items=[]}) => {
                 alignItems="center"
                 justifyContent="center"
                 pt={8}
-                color="brand.g12"
             >
                 <User/>
-                <Heading p={5} fontFamily="Roboto">.Mentha.</Heading>
+                <Heading p={5}>.Mentha.</Heading>
             </Flex>
 
             <Flex
