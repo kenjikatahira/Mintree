@@ -20,11 +20,7 @@ const runMiddleware = function(req, res, fn) {
 
 dotenv.config()
 
-const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-})
-
-const Notion = async () => {
+const Notion = async (notion) => {
     const { results } = await notion.databases
         .query({ database_id : process.env.NOTION_DATABASE_ID })
 
@@ -79,8 +75,10 @@ const Notion = async () => {
 
 export default async function handler(req, res) {
     await runMiddleware(req, res, cors)
-
-    const data = await Notion()
+    const notion = new Client({
+        auth: process.env.NOTION_TOKEN,
+    })
+    const data = await Notion(notion)
     try {
         res.status(200).json({ data })
     } catch(err) {
