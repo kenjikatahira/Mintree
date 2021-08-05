@@ -21,6 +21,8 @@ const runMiddleware = function(req, res, fn) {
 
 const filterExpired = ({ expired_time }) => !expired_time || new Date(expired_time).valueOf() > new Date().valueOf()
 
+const filterEmptyItems = ({properties}) => properties.Name.value && properties.Url.value
+
 const getDatabase = async (notion) => {
     const { results } = await notion.databases.query({
         database_id : process.env.NOTION_DATABASE_ID,
@@ -58,7 +60,7 @@ const getDatabase = async (notion) => {
                 Name : {
                     id : Name.id,
                     type : Name.type,
-                    value : Name.title[0].text.content
+                    value : ((Name.title[0] || {}).text || {}).content || ''
                 },
                 Url : {
                     id : Url.id,
@@ -76,6 +78,7 @@ const getDatabase = async (notion) => {
 
     return results.map(getProperties)
                     .filter(filterExpired)
+                    .filter(filterEmptyItems)
 }
 
 export default async function handler(req, res) {

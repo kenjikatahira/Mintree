@@ -11,6 +11,15 @@ export async function getServerSideProps(context) {
             data : items
         } = await response.json()
 
+        if(!items.length) {
+            return {
+                redirect : {
+                    destination: process.env.MAIN_SITE_URL,
+                    permanent: false
+                }
+            }
+        }
+
         return {
             props: {
                 items
