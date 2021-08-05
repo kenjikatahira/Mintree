@@ -1,5 +1,22 @@
 import { Client } from '@notionhq/client'
 import dotenv from 'dotenv'
+import Cors from 'cors'
+
+const cors = Cors({
+    methods: ['GET', 'HEAD'],
+})
+
+const runMiddleware = function(req, res, fn) {
+    return new Promise((resolve, reject) => {
+        fn(req, res, (result) => {
+            if (result instanceof Error) {
+            return reject(result)
+            }
+
+            return resolve(result)
+        })
+    })
+}
 
 dotenv.config()
 
@@ -61,6 +78,8 @@ const Notion = async () => {
 }
 
 export default async function handler(req, res) {
+    await runMiddleware(req, res, cors)
+
     const data = await Notion()
     try {
         res.status(200).json({ data })
