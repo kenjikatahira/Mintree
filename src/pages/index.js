@@ -1,5 +1,8 @@
+import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
-import Feed from '../components/Feed'
+import MintreeLogo from '../components/MintreeLogo'
+import MintreeLinks from '../components/MintreeLinks'
+
 export async function getServerSideProps(context) {
     try {
 
@@ -15,21 +18,20 @@ export async function getServerSideProps(context) {
         }
 
     } catch(err) {
-        // return {
-        //     redirect: {
-        //         destination: 'https://www.ateliementha.com/',
-        //         permanent: false,
-        //     },
-        // }
         return {
-            props: { items : [] },
+            redirect: {
+                destination: 'https://www.ateliementha.com/',
+                permanent: false,
+            },
         }
     }
 }
 
+
+
 export default function Home({items}) {
     return (
-        <div>
+        <Box>
             <Head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -39,7 +41,18 @@ export default function Home({items}) {
                 <meta name="copyright" content="kkatahira" />
                 <meta name="robots" content="index, follow" />
             </Head>
-            <Feed items={items}></Feed>
-        </div>
+            <Box h="100vh" m="0" bg="brand.p1">
+                <Flex
+                    className="header"
+                    flexDir="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    pt={8}
+                >
+                    <MintreeLogo />
+                </Flex>
+                <MintreeLinks items={items}></MintreeLinks>
+            </Box>
+        </Box>
     )
 }

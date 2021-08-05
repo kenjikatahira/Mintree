@@ -1,7 +1,7 @@
 import { Avatar } from "@chakra-ui/react"
 import photo from '../assets/images/mentha_profile.webp'
 
-const User = (props) => {
+const MintreeAvatar = (props) => {
     return (
         <>
             <Avatar
@@ -16,4 +16,4 @@ const User = (props) => {
     )
 }
 
-export default User
+export default MintreeAvatar
