@@ -3,41 +3,6 @@ import Head from 'next/head'
 import MintreeLogo from '../components/MintreeLogo'
 import MintreeLinks from '../components/MintreeLinks'
 
-export async function getServerSideProps(context) {
-    try {
-
-        const response = await fetch(process.env.MINTREE_NOTION_API)
-        const {
-            data : items
-        } = await response.json()
-
-        if(!items.length) {
-            return {
-                redirect : {
-                    destination: process.env.MAIN_SITE_URL,
-                    permanent: false
-                }
-            }
-        }
-
-        return {
-            props: {
-                items
-            },
-        }
-
-    } catch(err) {
-        return {
-            redirect: {
-                destination: process.env.MAIN_SITE_URL,
-                permanent: false,
-            },
-        }
-    }
-}
-
-
-
 export default function Home({items}) {
     return (
         <Box>
@@ -64,4 +29,38 @@ export default function Home({items}) {
             </Box>
         </Box>
     )
+}
+
+export async function getServerSideProps(context) {
+    try {
+        const response = await fetch(process.env.MINTREE_NOTION_API)
+        const {
+            data : items
+        } = await response.json()
+
+        if(!items.length) {
+            return {
+                redirect: {
+                    destination: process.env.MAIN_SITE_URL,
+                    permanent: false,
+                },
+            }
+        }
+
+        return {
+            props: {
+                items,
+            },
+        }
+
+    } catch(err) {
+
+        return {
+            redirect: {
+                destination: process.env.MAIN_SITE_URL,
+                permanent: false,
+            },
+        }
+
+    }
 }

@@ -2,22 +2,22 @@ import { Client } from '@notionhq/client'
 import dotenv from 'dotenv'
 import Cors from 'cors'
 
-const cors = Cors({
-    methods: ['GET', 'HEAD'],
-})
+// const cors = Cors({
+//     methods: ['GET', 'HEAD'],
+// })
 
 dotenv.config()
 
-const runMiddleware = function(req, res, fn) {
-    return new Promise((resolve, reject) => {
-        fn(req, res, (result) => {
-            if (result instanceof Error) {
-            return reject(result)
-            }
-            return resolve(result)
-        })
-    })
-}
+// const runMiddleware = function(req, res, fn) {
+//     return new Promise((resolve, reject) => {
+//         fn(req, res, (result) => {
+//             if (result instanceof Error) {
+//             return reject(result)
+//             }
+//             return resolve(result)
+//         })
+//     })
+// }
 
 const filterExpired = ({ expired_time }) => !expired_time || new Date(expired_time).valueOf() > new Date().valueOf()
 
@@ -82,7 +82,7 @@ const getDatabase = async (notion) => {
 }
 
 export default async function handler(req, res) {
-    await runMiddleware(req, res, cors)
+    // await runMiddleware(req, res, cors)
 
     const notion = new Client({
         auth: process.env.NOTION_TOKEN,
