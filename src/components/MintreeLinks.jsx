@@ -28,7 +28,6 @@ const MintreeLinks = ({items=[]}) => {
                     <LinkOverlay href={Url.value}>
                         <Text
                             fontSize="2xl"
-                            color="brand.g2"
                             fontFamily="Amatic SC"
                             fontWeight="700"
                             color="whiteAlpha.800"
