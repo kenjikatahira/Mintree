@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
     } catch(err) {
         return {
             redirect: {
-                destination: 'https://www.ateliementha.com/',
+                destination: process.env.MAIN_SITE_URL,
                 permanent: false,
             },
         }
