@@ -8,9 +8,7 @@ import {
     Text,
  } from "@chakra-ui/react"
 
-const MintreeLinks = (props) => {
-    const {items=[]} = props
-
+const MintreeLinks = ({items=[]}) => {
     const renderList = ({
         id,
         properties : {
@@ -44,7 +42,7 @@ const MintreeLinks = (props) => {
     }
 
     return (
-        <Box {...props} position="relative" pb={8}>
+        <Box position="relative" pb={8}>
             <Flex
                 className="feed"
                 flexDir="column"
