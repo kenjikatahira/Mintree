@@ -4,6 +4,7 @@ import {
 } from "@chakra-ui/react"
 
 const MintreeAvatar = (props) => {
+
     return (
         <>
             <Center

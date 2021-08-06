@@ -1,25 +1,20 @@
 import { Client } from '@notionhq/client'
+import moment from 'moment'
 import dotenv from 'dotenv'
-import Cors from 'cors'
-
-// const cors = Cors({
-//     methods: ['GET', 'HEAD'],
-// })
 
 dotenv.config()
 
-// const runMiddleware = function(req, res, fn) {
-//     return new Promise((resolve, reject) => {
-//         fn(req, res, (result) => {
-//             if (result instanceof Error) {
-//             return reject(result)
-//             }
-//             return resolve(result)
-//         })
-//     })
-// }
-
-const filterExpired = ({ expired_time }) => !expired_time || new Date(expired_time).valueOf() > new Date().valueOf()
+const filterRange = ({ properties : { Name },start_time,expire_time,hasRange }) => {
+    const now = moment(new Date())
+    if(!hasRange) {
+        return true
+    } else if(start_time && expire_time) {
+        return ( now.isBetween(start_time, expire_time) )
+    } else if(start_time && !expire_time) {
+        return now.isSameOrAfter(start_time)
+    }
+    return false
+}
 
 const filterEmptyItems = ({properties}) => properties.Name.value && properties.Url.value
 
@@ -48,14 +43,16 @@ const getDatabase = async (notion) => {
         id,
         created_time,
         last_edited_time,
-        properties : { Name = {}, Url = {}, Expire = {}, Image = {}, Hide = {} }
+        properties : { Name = {}, Url = {}, Range = {}, Image = {}, Hide = {} }
     }) => {
         return {
             id,
             created_time,
             last_edited_time,
             hide : Hide.checkbox,
-            expired_time : (Expire.date || {}).start,
+            hasRange : !!((Range.date || {}).start || (Range.date || {}).end),
+            start_time : (Range.date || {}).start ? moment((Range.date || {}).start) : undefined,
+            expire_time : (Range.date || {}).end ? moment((Range.date || {}).end) : undefined,
             properties : {
                 Name : {
                     id : Name.id,
@@ -77,13 +74,11 @@ const getDatabase = async (notion) => {
     }
 
     return results.map(getProperties)
-                    .filter(filterExpired)
+                    .filter(filterRange)
                     .filter(filterEmptyItems)
 }
 
 export default async function handler(req, res) {
-    // await runMiddleware(req, res, cors)
-
     const notion = new Client({
         auth: process.env.NOTION_TOKEN,
     })

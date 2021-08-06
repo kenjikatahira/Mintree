@@ -10,9 +10,9 @@ export default function Home({items}) {
                 <meta charSet="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <title>Mintree</title>
-                <meta name="description" content="Links for your bio profile" />
+                <meta name="description" content="Atelie Mentha content links" />
                 <meta name="author" content="kenjikatahira" />
-                <meta name="copyright" content="kkatahira" />
+                <meta name="copyright" content="kenjikatahira" />
                 <meta name="robots" content="index, follow" />
             </Head>
             <Box h="100vh" m="0" bg="brand.p1">
@@ -31,20 +31,24 @@ export default function Home({items}) {
     )
 }
 
+const redirect = () => {
+    return {
+        redirect: {
+            destination: process.env.MAIN_SITE_URL,
+            permanent: false,
+        },
+    }
+}
+
 export async function getServerSideProps(context) {
     try {
         const response = await fetch(process.env.MINTREE_NOTION_API)
         const {
-            data : items
+            data : items,
         } = await response.json()
 
         if(!items.length) {
-            return {
-                redirect: {
-                    destination: process.env.MAIN_SITE_URL,
-                    permanent: false,
-                },
-            }
+            return redirect()
         }
 
         return {
@@ -53,14 +57,7 @@ export async function getServerSideProps(context) {
             },
         }
 
-    } catch(err) {
-
-        return {
-            redirect: {
-                destination: process.env.MAIN_SITE_URL,
-                permanent: false,
-            },
-        }
-
+    } catch (err) {
+        return redirect()
     }
 }
