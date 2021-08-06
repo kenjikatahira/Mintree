@@ -15,17 +15,20 @@ export default function Home({items}) {
                 <meta name="copyright" content="kenjikatahira" />
                 <meta name="robots" content="index, follow" />
             </Head>
-            <Box h="100vh" m="0" bg="brand.p1">
+            <Box minHeight="100vh" m="0" bg="brand.p1">
+
                 <Flex
                     className="header"
                     flexDir="column"
                     alignItems="center"
                     justifyContent="center"
                     pt={8}
+                    w="100%"
                 >
                     <MintreeLogo />
                 </Flex>
                 <MintreeLinks items={items}></MintreeLinks>
+
             </Box>
         </Box>
     )
@@ -48,7 +51,10 @@ export async function getServerSideProps(context) {
         } = await response.json()
 
         if(!items.length) {
-            return redirect()
+            !items.length && console.error('No items ; Items without required fields : [NAME,URL]; Or no items within the Date range')
+            if(!process.env.MAIN_SITE_URL) {
+                return redirect()
+            }
         }
 
         return {
@@ -58,6 +64,8 @@ export async function getServerSideProps(context) {
         }
 
     } catch (err) {
-        return redirect()
+        if(process.env.MAIN_SITE_URL) {
+            return redirect()
+        }
     }
 }

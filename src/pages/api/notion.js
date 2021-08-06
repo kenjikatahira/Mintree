@@ -1,8 +1,7 @@
-import { Client } from '@notionhq/client'
+import {
+    Client
+} from '@notionhq/client'
 import moment from 'moment'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 const filterRange = ({ properties : { Name },start_time,expire_time,hasRange }) => {
     const now = moment(new Date())
@@ -43,7 +42,7 @@ const getDatabase = async (notion) => {
         id,
         created_time,
         last_edited_time,
-        properties : { Name = {}, Url = {}, Range = {}, Image = {}, Hide = {} }
+        properties : { Name = {}, Url = {}, Range = {}, Hide = {} }
     }) => {
         return {
             id,
@@ -63,11 +62,6 @@ const getDatabase = async (notion) => {
                     id : Url.id,
                     type : Url.type,
                     value : Url.url
-                },
-                Image : {
-                    id : Image.id,
-                    type : Image.type,
-                    value : Image.files
                 }
             }
         }
@@ -83,10 +77,10 @@ export default async function handler(req, res) {
         auth: process.env.NOTION_TOKEN,
     })
 
-    const data = await getDatabase(notion)
+    const database = await getDatabase(notion)
 
     try {
-        res.status(200).json({ data })
+        res.status(200).json({ data : database })
     } catch(err) {
         res.status(400).json({ err })
     }
