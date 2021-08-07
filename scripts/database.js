@@ -1,5 +1,6 @@
 const { Client } = require('@notionhq/client')
 const dotenv = require('dotenv')
+
 dotenv.config()
 
 const _init = (notion) => {
