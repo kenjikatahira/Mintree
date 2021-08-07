@@ -37,7 +37,7 @@ export default function Home({items}) {
 const redirect = () => {
     return {
         redirect: {
-            destination: process.env.MAIN_SITE_URL,
+            destination: process.env.REDIRECT_URL,
             permanent: false,
         },
     }
@@ -52,9 +52,7 @@ export async function getServerSideProps(context) {
 
         if(!items.length) {
             !items.length && console.error('No items ; Items without required fields : [NAME,URL]; Or no items within the Date range')
-            if(!process.env.MAIN_SITE_URL) {
-                return redirect()
-            }
+            return redirect()
         }
 
         return {
@@ -64,8 +62,6 @@ export async function getServerSideProps(context) {
         }
 
     } catch (err) {
-        if(process.env.MAIN_SITE_URL) {
-            return redirect()
-        }
+        return redirect()
     }
 }

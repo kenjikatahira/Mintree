@@ -3,12 +3,22 @@ import {
 } from '@notionhq/client'
 import moment from 'moment'
 
-const filterRange = ({ properties : { Name },start_time,expire_time,hasRange }) => {
+const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+})
+
+const filterRange = ({ start_time, expire_time, hasRange }) => {
     const now = moment(new Date())
+    // if no range is setted, show item
     if(!hasRange) {
         return true
+    // if user only setted days
+    } else if((start_time && expire_time) && (expire_time.format('HHmmss') === '000000' && start_time.format('HHmm') === '000000')) {
+        return ( now.isBetween(start_time, expire_time) || now.isSame(expire_time,'day'))
+    // if user setted days and hours
     } else if(start_time && expire_time) {
-        return ( now.isBetween(start_time, expire_time) )
+        return ( now.isBetween(start_time, expire_time))
+    // if user only setted start time
     } else if(start_time && !expire_time) {
         return now.isSameOrAfter(start_time)
     }
@@ -44,6 +54,7 @@ const getDatabase = async (notion) => {
         last_edited_time,
         properties : { Name = {}, Url = {}, Range = {}, Hide = {} }
     }) => {
+        console.log(Name.title[0].text.content, moment((Range.date || {}).end))
         return {
             id,
             created_time,
@@ -73,10 +84,6 @@ const getDatabase = async (notion) => {
 }
 
 export default async function handler(req, res) {
-    const notion = new Client({
-        auth: process.env.NOTION_TOKEN,
-    })
-
     const database = await getDatabase(notion)
 
     try {

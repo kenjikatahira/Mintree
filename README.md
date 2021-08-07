@@ -1,6 +1,6 @@
 # Mintree
 
-### Mintree is a tool made with [Nextjs](https://nextjs.org/), [Chakra-ui](https://chakra-ui.com/) and [Notion](https://www.notion.so/) api.
+### Mintree is a simple tool made with [Nextjs](https://nextjs.org/), [Chakra-ui](https://chakra-ui.com/) and [Notion](https://www.notion.so/) api.
 ### It allows you to share multiple links ( like [Linktree](https://linktr.ee/) ) using Notion's tables.
 
 ## Configuration
