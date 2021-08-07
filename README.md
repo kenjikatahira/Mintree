@@ -4,8 +4,8 @@
 ### It allows you to share multiple links ( like [Linktree](https://linktr.ee/) ) using Notion's tables.
 
 ## Configuration
-
-- Create your integration on Notion api by acessing : https://www.notion.so/my-integrations
+- First You will need a account on [Notion](https://www.notion.so/)
+- Create your own integration on Notion api by acessing : https://www.notion.so/my-integrations
 - Add a new page on your Notion
 - Share the page to integration app by clicking on the share button at the top right of window
 - Get the page_id from the created page :
