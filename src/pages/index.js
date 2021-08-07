@@ -9,8 +9,8 @@ export default function Home({items}) {
             <Head>
                 <meta charSet="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <title>Mintree</title>
-                <meta name="description" content="Atelie Mentha content links" />
+                <title>Ateliê Mentha - Mintree</title>
+                <meta name="description" content="Atelie Mentha links for social media" />
                 <meta name="author" content="kenjikatahira" />
                 <meta name="copyright" content="kenjikatahira" />
                 <meta name="robots" content="index, follow" />

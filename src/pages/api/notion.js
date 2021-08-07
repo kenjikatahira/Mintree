@@ -54,7 +54,6 @@ const getDatabase = async (notion) => {
         last_edited_time,
         properties : { Name = {}, Url = {}, Range = {}, Hide = {} }
     }) => {
-        console.log(Name.title[0].text.content, moment((Range.date || {}).end))
         return {
             id,
             created_time,

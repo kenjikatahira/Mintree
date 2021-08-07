@@ -1,5 +1,4 @@
 import { Avatar } from "@chakra-ui/react"
-import photo from '../assets/images/mentha_profile.webp'
 
 const MintreeAvatar = (props) => {
     return (
@@ -7,8 +6,8 @@ const MintreeAvatar = (props) => {
             <Avatar
                 {...props}
                 size="2xl"
-                name="Mentha"
-                src={photo.src}
+                name="Kenji Katahira"
+                src="https://github.com/kenjikatahira.png"
                 bg="brand.p1"
                 boxShadow="md"
             />
