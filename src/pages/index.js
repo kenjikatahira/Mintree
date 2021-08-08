@@ -9,8 +9,8 @@ export default function Home({items}) {
             <Head>
                 <meta charSet="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <title>Ateliê Mentha - Mintree</title>
-                <meta name="description" content="Atelie Mentha links for social media" />
+                <title>Mintree</title>
+                <meta name="description" content="My links for social media" />
                 <meta name="author" content="kenjikatahira" />
                 <meta name="copyright" content="kenjikatahira" />
                 <meta name="robots" content="index, follow" />
@@ -43,7 +43,6 @@ export default function Home({items}) {
                         color="#252422"
                         fontWeight="300"
                         pb={3}
-                        color="rgba(0, 0, 0, 0.8)"
                         borderBottom="1px solid rgba(0, 0, 0, 0.1)"
                     >
                         Front-end Developer
