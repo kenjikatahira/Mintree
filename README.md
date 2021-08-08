@@ -23,6 +23,10 @@ yarn database
 
 run :
 ```bash
+yarn install
+```
+then to run the server:
+```bash
 yarn dev
 ```
 

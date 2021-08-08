@@ -9,7 +9,7 @@ import {
  } from "@chakra-ui/react"
 
 const MintreeLinks = ({items=[]}) => {
-    const renderList = ({
+    const renderItems = ({
         id,
         properties : {
             Name,Url
@@ -40,6 +40,14 @@ const MintreeLinks = ({items=[]}) => {
         )
     }
 
+    const renderList = () => {
+        return (
+            <List spacing={4}>
+                {items.map(renderItems)}
+            </List>
+        )
+    }
+
     return (
         <Box position="relative" pb={8}>
             <Flex
@@ -50,9 +58,7 @@ const MintreeLinks = ({items=[]}) => {
                 pt={16}
             >
                 <Box w="300px">
-                    <List spacing={4}>
-                        {items.map(renderList)}
-                    </List>
+                    {renderList()}
                 </Box>
             </Flex>
         </Box>

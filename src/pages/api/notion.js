@@ -59,14 +59,14 @@ const getDatabase = async (notion) => {
             created_time,
             last_edited_time,
             hide : Hide.checkbox,
-            hasRange : !!((Range.date || {}).start || (Range.date || {}).end),
-            start_time : (Range.date || {}).start ? moment((Range.date || {}).start) : undefined,
-            expire_time : (Range.date || {}).end ? moment((Range.date || {}).end) : undefined,
-            properties : {
+            hasRange    : !!(Range.date?.start || Range.date?.end),
+            start_time  : Range.date?.start ? moment(Range.date?.start) : undefined,
+            expire_time : Range.date?.end ? moment(Range.date?.end) : undefined,
+            properties  : {
                 Name : {
                     id : Name.id,
                     type : Name.type,
-                    value : ((Name.title[0] || {}).text || {}).content || ''
+                    value : Name.title[0]?.text?.content || ''
                 },
                 Url : {
                     id : Url.id,

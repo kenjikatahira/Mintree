@@ -110,8 +110,15 @@ const _init = (notion) => {
 }
 
 if(!process.env.NOTION_TOKEN) {
-    console.error('NOTION_TOKEN is not defined on .env')
-    process.exit(1)
+    console.error('NOTION_TOKEN variable is not defined on your .env file')
+    console.error('Get your Token on : https://www.notion.so/my-integrations')
+    process.exit()
+}
+
+if(!process.env.NOTION_PAGE_ID) {
+    console.error('NOTION_PAGE_ID variable is not defined on .env file')
+    console.error(`Did you got the id from page's url?`)
+    process.exit()
 }
 
 const notion = new Client({

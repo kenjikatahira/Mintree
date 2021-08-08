@@ -27,6 +27,7 @@ export default function Home({items}) {
                 >
                     <MintreeLogo />
                 </Flex>
+
                 <MintreeLinks items={items}></MintreeLinks>
 
             </Box>
@@ -46,9 +47,7 @@ const redirect = () => {
 export async function getServerSideProps(context) {
     try {
         const response = await fetch(process.env.MINTREE_NOTION_API)
-        const {
-            data : items,
-        } = await response.json()
+        const { data : items, } = await response.json()
 
         if(!items.length) {
             !items.length && console.error('No items ; Items without required fields : [NAME,URL]; Or no items within the Date range')
