@@ -9,6 +9,8 @@ const _init = (notion) => {
         title,
         properties,
     }, cb) => {
+        console.log('Creating database...')
+
         try {
             const response = await notion.databases.create({
                 parent,
@@ -17,6 +19,7 @@ const _init = (notion) => {
             })
 
             msgWithDatabaseId(response)
+
             cb(response)
 
         } catch(err) {
