@@ -1,7 +1,7 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import Head from 'next/head'
-import MintreeLogo from '../components/MintreeLogo'
 import MintreeLinks from '../components/MintreeLinks'
+import MintreeAvatar from '../components/MintreeAvatar'
 
 export default function Home({items}) {
     return (
@@ -15,7 +15,13 @@ export default function Home({items}) {
                 <meta name="copyright" content="kenjikatahira" />
                 <meta name="robots" content="index, follow" />
             </Head>
-            <Box minHeight="100vh" m="0" bg="brand.p1">
+            <Box
+                transform="scale(0.92)"
+                minHeight="100vh"
+                m="0"
+                bg="#fbfefb"
+                border="1px solid rgba(0, 0, 0, 0.1)"
+            >
 
                 <Flex
                     className="header"
@@ -25,7 +31,23 @@ export default function Home({items}) {
                     pt={8}
                     w="100%"
                 >
-                    <MintreeLogo />
+                    <MintreeAvatar mb="4" />
+                    <Heading
+                        fontSize="32px"
+                        fontWeight="300"
+                        pb="3"
+                    >
+                        Kenji Katahira
+                    </Heading>
+                    <Text
+                        color="#252422"
+                        fontWeight="300"
+                        pb={3}
+                        color="rgba(0, 0, 0, 0.8)"
+                        borderBottom="1px solid rgba(0, 0, 0, 0.1)"
+                    >
+                        Front-end Developer
+                    </Text>
                 </Flex>
 
                 <MintreeLinks items={items}></MintreeLinks>

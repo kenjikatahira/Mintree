@@ -18,20 +18,16 @@ const MintreeLinks = ({items=[]}) => {
         return (
             <ListItem
                 key={id}
-                borderColor="whiteAlpha.600"
-                borderWidth="1px"
-                borderRadius="2xl"
                 w="100%"
-                fontWeight="bold"
+                color="#252422"
+                _hover={{ color: 'rgba(0,0,0,.3)' }}
+                fontFamily="Inter"
+                fontWeight="300"
+                fontSize="lg"
             >
-                <LinkBox p={3} textAlign="center">
+                <LinkBox textAlign="center">
                     <LinkOverlay href={Url.value}>
-                        <Text
-                            fontSize="2xl"
-                            fontFamily="Amatic SC"
-                            fontWeight="700"
-                            color="whiteAlpha.800"
-                        >
+                        <Text p="1">
                             {Name.value}
                         </Text>
                     </LinkOverlay>
@@ -42,20 +38,20 @@ const MintreeLinks = ({items=[]}) => {
 
     const renderList = () => {
         return (
-            <List spacing={4}>
+            <List spacing={5}>
                 {items.map(renderItems)}
             </List>
         )
     }
 
     return (
-        <Box position="relative" pb={8}>
+        <Box>
             <Flex
                 className="feed"
                 flexDir="column"
                 alignItems="center"
                 justifyContent="center"
-                pt={16}
+                pt={5}
             >
                 <Box w="300px">
                     {renderList()}

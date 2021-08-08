@@ -1,16 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap'); */
-
-@font-face {
-    font-family: 'Amatic SC';
-    src: url('../assets/fonts/Amatic_SC/AmaticSC-Regular.ttf');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'Amatic SC';
-    src: url('../assets/fonts/Amatic_SC/AmaticSC-Bold.ttf') format("truetype");
-    font-weight: bold;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&display=swap');
 
 body {
     overflow-x: hidden;

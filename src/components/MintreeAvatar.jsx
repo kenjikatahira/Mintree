@@ -8,7 +8,6 @@ const MintreeAvatar = (props) => {
                 size="2xl"
                 name="Kenji Katahira"
                 src="https://github.com/kenjikatahira.png"
-                bg="brand.p1"
                 boxShadow="md"
             />
         </>
