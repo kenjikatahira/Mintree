@@ -10,9 +10,8 @@ Made with Nextjs, Chakra-ui and Notion api.
 - Create your own integration on Notion api by acessing : https://www.notion.so/my-integrations
 - Add a new page on your Notion
 - Share the page to integration app by clicking on the share button at the top right of window
-- Get the page_id from the created page :
-
-- Create a .env file from the .env-example
+- Get the page_id from the page's url : https://www.notion.so/{page_id}
+- Create a .env file copying variables from the .env-example
 - Set NOTION_PAGE_ID with the page id
 
 then run :
