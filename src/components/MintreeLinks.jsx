@@ -24,10 +24,13 @@ const MintreeLinks = ({items=[]}) => {
                 fontFamily="Inter"
                 fontWeight="300"
                 fontSize="lg"
+                border="1px solid rgba(0,0,0,.1)"
+                borderBottom="1px solid rgba(0,0,0,.2)"
+                boxShadow="sm"
             >
                 <LinkBox textAlign="center">
                     <LinkOverlay href={Url.value}>
-                        <Text p="1">
+                        <Text p="1" className="link-item">
                             {Name.value}
                         </Text>
                     </LinkOverlay>
