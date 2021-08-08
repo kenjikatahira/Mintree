@@ -12,8 +12,6 @@ Made with Nextjs, Chakra-ui and Notion api.
 - Share the page to integration app by clicking on the share button at the top right of window
 - Get the page_id from the created page :
 
-![alt text](https://i.ibb.co/C2kCR8X/url-id-example.png)
-
 - Create a .env file from the .env-example
 - Set NOTION_PAGE_ID with the page id
 
