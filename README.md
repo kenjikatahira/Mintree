@@ -1,7 +1,6 @@
 # Mintree
 
-### Mintree is a simple tool that allows You to create a bio page to share multiple links (like Linktree) using Notion Tables. 
-Made with Nextjs, Chakra-ui and Notion api.
+### Mintree is a simple tool that allows You to create a bio page to share multiple scheduled links (like Linktree) using Notion Tables, Nextjs and Chakra-ui.
 
 [Live Example](https://mintreeapp.vercel.app/)
 
