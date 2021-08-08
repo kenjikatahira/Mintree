@@ -1,7 +1,6 @@
 # Mintree
 
-### Mintree is a simple tool made with [Nextjs](https://nextjs.org/), [Chakra-ui](https://chakra-ui.com/) and [Notion](https://www.notion.so/) api.
-### It allows you to share multiple links ( like [Linktree](https://linktr.ee/) ) using Notion's tables.
+### Mintree is a simple tool that allows You to create a bio page to share multiple links (like Linktree) using Notion Tables. Made with Nextjs, Chakra-ui and Notion api.
 
 ## Configuration
 - First You will need a account on [Notion](https://www.notion.so/)
@@ -12,14 +11,16 @@
 
 ![alt text](https://i.ibb.co/C2kCR8X/url-id-example.png)
 
-- Set the variable NOTION_PAGE_ID with the id at the .env file
+- Create a .env file from the .env-example
+- Set NOTION_PAGE_ID with the page id
 
 then run :
 ```bash
 yarn database
 ```
 
-- Now you copy the database id retrieved from the command to the .env file
+- Now you copy the database id retrieved from the command
+- Set to NOTION_DATABASE_ID on .env file
 
 run :
 ```bash
