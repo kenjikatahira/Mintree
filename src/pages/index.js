@@ -15,14 +15,7 @@ export default function Home({items}) {
                 <meta name="copyright" content="kenjikatahira" />
                 <meta name="robots" content="index, follow" />
             </Head>
-            <Box
-                transform="scale(0.92)"
-                minHeight="100vh"
-                m="0"
-                bg="#fbfefb"
-                border="1px solid rgba(0, 0, 0, 0.1)"
-            >
-
+            <Box>
                 <Flex
                     className="header"
                     flexDir="column"
