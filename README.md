@@ -11,14 +11,16 @@
 
 ![alt text](https://i.ibb.co/C2kCR8X/url-id-example.png)
 
-- Set the variable NOTION_PAGE_ID with the id at the .env file
+- Create a .env file from the .env-example
+- Set NOTION_PAGE_ID with the page id
 
 then run :
 ```bash
 yarn database
 ```
 
-- Now you copy the database id retrieved from the command to the .env file
+- Now you copy the database id retrieved from the command
+- Set to NOTION_DATABASE_ID on .env file
 
 run :
 ```bash
