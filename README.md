@@ -3,6 +3,8 @@
 ### Mintree is a simple tool that allows You to create a bio page to share multiple links (like Linktree) using Notion Tables. 
 Made with Nextjs, Chakra-ui and Notion api.
 
+[Live Example](https://mintreeapp.vercel.app/)
+
 ## Configuration
 - First You will need a account on [Notion](https://www.notion.so/)
 - Create your own integration on Notion api by acessing : https://www.notion.so/my-integrations
