@@ -2,8 +2,10 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import MintreeLinks from '../components/MintreeLinks'
 import MintreeAvatar from '../components/MintreeAvatar'
+import Notion from '../api/notion'
 
-export default function Home({items}) {
+export default function Home(props) {
+    const items = JSON.parse(props.items)
     return (
         <Box>
             <Head>
@@ -49,32 +51,55 @@ export default function Home({items}) {
     )
 }
 
-const redirect = () => {
-    return {
-        redirect: {
-            destination: process.env.REDIRECT_URL,
-            permanent: false,
-        },
-    }
+const defaultValue = () => {
+    return JSON.stringify([
+        {
+            "id": "e39d3e9b-d4de-4775-a669-d3560f432ad3",
+            "hide": false,
+            "hasRange": false,
+            "properties": {
+                "Name": {
+                    "id": "title",
+                    "type": "title",
+                    "value": "Github"
+                },
+                "Url": {
+                    "id": "|MwP",
+                    "type": "url",
+                    "value": "https://github.com/kenjikatahira"
+                }
+            }
+        }
+    ])
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
     try {
-        const response = await fetch(process.env.MINTREE_NOTION_API)
-        const { data : items, } = await response.json()
+        let data = await Notion()
+        const items = JSON.stringify(data)
 
-        if(!items.length) {
-            !items.length && console.error('No items ; Items without required fields : [NAME,URL]; Or no items within the Date range')
-            return redirect()
+        if(!items) {
+            return {
+                props : {
+                    items : defaultValue()
+                }
+            }
         }
 
         return {
             props: {
                 items,
             },
+            revalidate: 1,
         }
 
-    } catch (err) {
-        return redirect()
+    } catch(e) {
+
+        return {
+            props : {
+                items : defaultValue()
+            }
+        }
+
     }
 }

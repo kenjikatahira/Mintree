@@ -82,12 +82,6 @@ const getDatabase = async (notion) => {
                     .filter(filterEmptyItems)
 }
 
-export default async function handler(req, res) {
-    const database = await getDatabase(notion)
-
-    try {
-        res.status(200).json({ data : database })
-    } catch(err) {
-        res.status(400).json({ err })
-    }
+export default async function handler () {
+    return await getDatabase(notion)
 }
